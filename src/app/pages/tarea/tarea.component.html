@@ -1,0 +1,75 @@
+<h1>
+    Nombre del Tarea </h1>
+<hr>
+
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger" routerLink="/tareas">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+    </div>
+</div>
+
+
+
+<div class="row animated fadeIn faster">
+    <div class="col">
+
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+            <div class="form-group">
+                <label>Firebase ID</label>
+                <input type="text" class="form-control" placeholder="Firebase ID" [(ngModel)]="tarea.id" name="id" disabled="disabled">
+                <small class="form-text text-muted">Este campo es autogenerado</small>
+            </div>
+
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre del Tarea" [(ngModel)]="tarea.nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Posición Latitud</label>
+                <input type="text" class="form-control" [(ngModel)]="tarea.latitud" name="latitud" placeholder="Latitud de la tarea">
+            </div>
+
+            <div class="form-group">
+                <label>Posición Longitud</label>
+                <input type="text" class="form-control" [(ngModel)]="tarea.longitud" name="longitud" placeholder="Longitud de la tarea">
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <br>
+
+                <button *ngIf="tarea.succesfull" (click)="tarea.succesfull = false" class="btn btn-outline-success w-50" type="button">
+          <i class="fa fa-smile-wink"></i>
+          Succesfull
+        </button>
+
+                <button *ngIf="!tarea.succesfull" (click)="tarea.succesfull = true" class="btn btn-outline-danger w-50" type="button">
+            <i class="fa fa-dizzy"></i>
+            Unsuccesfull
+        </button>
+
+            </div>
+
+
+
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>

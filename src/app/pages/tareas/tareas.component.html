@@ -1,0 +1,73 @@
+<h1>
+    Listado de Tareas</h1>
+<hr>
+
+
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/tarea/nuevo" class="btn btn-primary">
+      <i class="fa fa-plus"></i>
+      Agregar
+    </button>
+    </div>
+</div>
+
+
+<table *ngIf="!cargando && tareas.length > 0" class="table mt-3 animated fadeIn faster animated fadeIn faster">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Latitud</th>
+            <th scope="col">Longitud</th>
+            <th scope="col">Succesfull</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tarea of tareas; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ tarea.nombre }}</td>
+            <td>{{ tarea.latitud }}</td>
+            <td>{{ tarea.longitud }}</td>
+            <td>
+
+                <label *ngIf="tarea.succesfull" class="badge badge-success">Succesfull</label>
+                <label *ngIf="!tarea.succesfull" class="badge badge-danger">Unsuccesfull</label>
+
+            </td>
+            <td>
+
+                <button class="btn btn-info mr-1" [routerLink]="['/tarea', tarea.id ]">
+          <i class="fa fa-pen"></i>
+        </button>
+
+                <button class="btn btn-danger mr-1" (click)="borrarTarea( tarea, i ) ">
+          <i class="fa fa-trash"></i>
+        </button>
+
+                <button class="btn btn-dark" [routerLink]="['/mapa', tarea.id ]">
+            <i class="fa fa-location-arrow"></i>
+          </button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!cargando && tareas.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>
