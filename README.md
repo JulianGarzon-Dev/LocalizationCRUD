@@ -1,18 +1,18 @@
 # Location CRUD
 
-Web app developed in Angular. Contains a CRUD of task that include localization for coordinates. 
+Web app developed in Angular. Contain CRUD of task that include localization for coordinates. 
 
 ## Tareas Page
 
-In this page you can see all task that you create.
+In this page you can see all task that you create. Add you database.
 
 ![alt text](tareas.png)
 
 ## Mapa Page
 
-In this page you can see the location for the coordinates that you add in your task create.
+In this page you can see the location for the coordinates that you add in your task create. Add you API Google maps key.
 
-![alt text](tareas.png)
+![alt text](mapa.png)
 
 Enjoy!
 
